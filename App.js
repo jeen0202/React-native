@@ -1,18 +1,16 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View } from 'react-native';
-import logo from './assets/logo.png';
+import {Image, StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import Header from './components/Header'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      
-      
-      <Image source={{ uri: "https://i.imgur.com/TkIrScD.png" }} style={{ width: 305, height: 159 }} />
-      <Text style={{color: '#888', fontSize: 18}}>
-      To share a Photo from your phone with a friend, just press the button below!
-      </Text>
-    </View>
-  );
+export default class App extends React.Component{
+  render(){
+    return (
+      //SafeAreaView : 앱화면에서 안전하게 노출되는 지역설정
+      <SafeAreaView style={styles.container}>
+        <Header />        
+      </SafeAreaView>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
