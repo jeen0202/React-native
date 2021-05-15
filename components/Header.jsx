@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#212121',
         justifyContent: 'center',
         alignItems:'center',
+        //Platform.select를 사용하여 os별로 다르게 지정한다.
         paddingTop : Platform.select({
             ios:2,
             android:0

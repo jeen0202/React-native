@@ -8,7 +8,7 @@ const TaskModal =({
     return (
         <Modal
             isVisible = {isVisible}
-            avoidKeyboard
+            avoidKeyboard// 키보드 화면이 열렸을 때 화면이동
         >
             <View style= {styles.container}>
                 <TextInput 
