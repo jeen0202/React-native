@@ -1,10 +1,13 @@
 import React from 'react'
 import {TocuableOpacity,Text,StyleSheet, TouchableOpacity} from 'react-native'
 
-const DeleteButton = () => {
+const DeleteButton = ({
+    onPress,
+}) => {
     return (
         <TouchableOpacity
             activeOpacity={0.8}
+            onPress={onPress}
             style={styles.button}>
                 <Text style={styles.text}>
                     삭제
