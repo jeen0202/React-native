@@ -5,7 +5,9 @@ import Modal from 'react-native-modal'
 const TaskModal =({
     isVisible,
     hide,
+    add,
 }) => {
+    let content = ''
     return (
         <Modal
             isVisible = {isVisible}
@@ -14,7 +16,11 @@ const TaskModal =({
             styles={styles.modal}
         >
             <View style= {styles.container}>
-                <TextInput 
+                <TextInput
+                onChangeText={(text)=> {
+                    content = text
+                }} 
+                onEndEditing={()=> add(content)}
                     placeholder="새로운 할 일을 추가해주세요">                    
                 </TextInput>
             </View>
