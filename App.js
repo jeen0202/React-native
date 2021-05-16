@@ -1,17 +1,41 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import {StyleSheet,FlatList,SafeAreaView } from 'react-native';
 import Header from './components/Header'
 import TodoItem from './components/TodoItem'
 import TaskModal from './components/TaskModal'
 
 export default class App extends React.Component{
+  state = {
+    todos :[
+      {
+        title : "주간회의",
+        done : true,
+      },
+      {
+        title : "면직처리",
+        done : false,
+      },
+    ]
+  }
   render(){
     return (
       //SafeAreaView : 앱화면에서 안전하게 노출되는 지역설정
       <SafeAreaView style={styles.container}>
-        <Header />     
-        <TodoItem title="React-Native App 만들기" done={true}/>
-        <TodoItem title="사업계획서 작성하기" done={false}/>
+        <Header />    
+        <FlatList
+          data = {this.state.todos}
+          renderItem={({item}) => {
+          return(
+          <TodoItem 
+          title = {item.title} 
+          done = {item.done}
+          keyExtractor={(_, index) => {
+            return '${index}'
+            }}
+          />
+          )
+        }}
+        />
         <TaskModal isVisible={false} />   
       </SafeAreaView>
     );
