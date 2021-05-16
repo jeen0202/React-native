@@ -4,11 +4,14 @@ import Modal from 'react-native-modal'
 
 const TaskModal =({
     isVisible,
+    hide,
 }) => {
     return (
         <Modal
             isVisible = {isVisible}
+            onBackdropPress={hide}
             avoidKeyboard// 키보드 화면이 열렸을 때 화면이동
+            styles={styles.modal}
         >
             <View style= {styles.container}>
                 <TextInput 
