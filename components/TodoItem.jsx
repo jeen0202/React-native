@@ -8,6 +8,7 @@ import DeleteButton from './DeleteButton'
     title,
     done,
     remove,
+    toggle,
 }) => {
     return (
         <Swipeable renderRightActions={()=> <DeleteButton onPress={remove}/>}
@@ -16,6 +17,7 @@ import DeleteButton from './DeleteButton'
                 <View style={styles.todo}>
                     <TouchableOpacity
                         activeOpacity={0.8}
+                        onPress={toggle}
                         style={done ? styles.done : styles.check}
                         >
                             <FontAwesome name="check" color={done ? '#FFFFFF' : '#E0E0E0'} size={14}/>
