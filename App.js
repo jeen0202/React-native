@@ -1,10 +1,16 @@
 import React from 'react';
-import {StyleSheet,FlatList,SafeAreaView, TouchableHighlightBase } from 'react-native';
+import {StyleSheet,FlatList,SafeAreaView,AsyncStorage } from 'react-native';
 import Header from './components/Header'
 import TodoItem from './components/TodoItem'
 import TaskModal from './components/TaskModal'
 
 export default class App extends React.Component{
+  //App 실행시 정보 호출
+  componentDidMount() {
+    AsyncStorage.getItem('@todo:state').then((state)=> {
+      this.setState(JSON.parse(state))
+    })
+  }
   state = {
     todos :[
       {        
@@ -17,6 +23,10 @@ export default class App extends React.Component{
       },
     ],
     showModal : false
+  }
+  //현재 state를 저장
+  save = () => {
+    AsyncStorage.setItem('@todo:state', JSON.stringify(this.state))
   }
   render(){
     return (
