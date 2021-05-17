@@ -7,8 +7,7 @@ import TaskModal from './components/TaskModal'
 
 //redux를 사용하기 위한 component import
 import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import { useSelector } from 'react-redux'
+import { Provider, connect} from 'react-redux'
 import taskReducer from './store/taskReducer';
 
 export default class App extends React.Component{
@@ -39,10 +38,9 @@ export default class App extends React.Component{
     AsyncStorage.setItem('@todo:state',JSON.stringify(this.state))
   }
   render(){
-    // console.log(this.state); 
-    // const todos = useSelector(state => state.todos)
+    //console.log(this.state);    
     const store = createStore(taskReducer);
-    console.log(store.getState());
+    //console.log(store.getState());
     return (      
       //SafeAreaView : 앱화면에서 안전하게 노출되는 지역설정
       <Provider store = {store}>
@@ -55,7 +53,8 @@ export default class App extends React.Component{
             data = {store.getState().todos}
             renderItem={({item,index}) => {
             return(
-              <TodoItem          
+              <TodoItem 
+              id = {item.id}         
               title = {item.task} 
               done = {item.done}
               remove={()=>{
