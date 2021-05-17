@@ -5,6 +5,10 @@ import Header from './components/Header'
 import TodoItem from './components/TodoItem'
 import TaskModal from './components/TaskModal'
 
+//redux를 사용하기 위한 component import
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+
 export default class App extends React.Component{
   //App 실행시 정보 호출  
   componentDidMount() {
@@ -40,7 +44,7 @@ export default class App extends React.Component{
     AsyncStorage.setItem('@todo:state',JSON.stringify(this.state))
   }
   render(){
-    console.log(this.state); 
+    // console.log(this.state); 
     return (      
       //SafeAreaView : 앱화면에서 안전하게 노출되는 지역설정
       <SafeAreaView style={styles.container}>
