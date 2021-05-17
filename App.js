@@ -30,7 +30,7 @@ export default class App extends React.Component{
         done : true,
       },
       {
-        title : "면직처리",
+        title : "메일확인",
         done : false,
       },
     ],
