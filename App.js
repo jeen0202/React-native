@@ -1,15 +1,27 @@
 import React from 'react';
-import {StyleSheet,FlatList,SafeAreaView,AsyncStorage } from 'react-native';
+import {StyleSheet,FlatList,SafeAreaView } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Header from './components/Header'
 import TodoItem from './components/TodoItem'
 import TaskModal from './components/TaskModal'
 
 export default class App extends React.Component{
-  //App 실행시 정보 호출
+  //App 실행시 정보 호출  
   componentDidMount() {
-    AsyncStorage.getItem('@todo:state').then((state)=> {
-      this.setState(JSON.parse(state))
-    })
+    AsyncStorage.getItem('@todo:state').then((state)=>{
+      if(state != null){
+        this.setState(JSON.parse(state));
+      }
+    });
+    // if(value!==null){
+    //   value.then((e)=>{
+    //     this.setState({
+    //       title: e.title,
+    //       done : e.done
+    //     })
+    //   })       
+      
+    // }  
   }
   state = {
     todos :[
@@ -24,17 +36,17 @@ export default class App extends React.Component{
     ],
     showModal : false
   }
-  //현재 state를 저장
-  save = () => {
-    AsyncStorage.setItem('@todo:state', JSON.stringify(this.state))
+  saveItem =() => {
+    AsyncStorage.setItem('@todo:state',JSON.stringify(this.state))
   }
   render(){
-    return (
+    console.log(this.state); 
+    return (      
       //SafeAreaView : 앱화면에서 안전하게 노출되는 지역설정
       <SafeAreaView style={styles.container}>
         <Header
           show={() => {
-            this.setState({ showModal: true})
+            this.setState({ showModal: true},this.saveItem)
           }} />    
         <FlatList
           data = {this.state.todos}
@@ -51,7 +63,7 @@ export default class App extends React.Component{
             toggle={()=>{
               const newTodos = [...this.state.todos]
               newTodos[index].done = !newTodos[index].done
-              this.setState({ todos:newTodos})
+              this.setState({ todos:newTodos},this.saveItem)
             }}
             // keyExtractor={(_, index) => {
             //   return '${index}'
@@ -59,6 +71,7 @@ export default class App extends React.Component{
             />
           )
         }}
+      keyExtractor={(item,index) => index.toString()}
         />
         <TaskModal isVisible={this.state.showModal}
           add={(title)=> {
@@ -68,10 +81,10 @@ export default class App extends React.Component{
                 done: false,
               }),
               showModal : false,
-            })
+            },this.saveItem)
           }}
           hide = {() => {
-            this.setState({ showModal : false})
+            this.setState({ showModal : false},this.saveItem)
           }} />   
       </SafeAreaView>
     );
