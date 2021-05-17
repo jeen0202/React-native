@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }from 'react';
 import {StyleSheet,FlatList,SafeAreaView } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Header from './components/Header'
@@ -8,9 +8,9 @@ import TaskModal from './components/TaskModal'
 //redux를 사용하기 위한 component import
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import { useSelector } from 'react-redux'
+import taskReducer from './store/taskReducer';
 
-const store = createStore(reducer);
-console.log(store.getState());
 export default class App extends React.Component{
   //App 실행시 정보 호출  
   componentDidMount() {
@@ -21,6 +21,7 @@ export default class App extends React.Component{
     });
 
   }
+
   // state = {
   //   todos :[
   //     {        
@@ -39,6 +40,9 @@ export default class App extends React.Component{
   }
   render(){
     // console.log(this.state); 
+    // const todos = useSelector(state => state.todos)
+    const store = createStore(taskReducer);
+    console.log(store.getState());
     return (      
       //SafeAreaView : 앱화면에서 안전하게 노출되는 지역설정
       <Provider store = {store}>
@@ -48,15 +52,15 @@ export default class App extends React.Component{
               this.setState({ showModal: true},this.saveItem)
             }} />    
           <FlatList
-            data = {this.state.todos}
+            data = {store.getState().todos}
             renderItem={({item,index}) => {
             return(
               <TodoItem          
-              title = {item.title} 
+              title = {item.task} 
               done = {item.done}
               remove={()=>{
                 this.setState({
-                  todos : this.state.todos.filter((_,i)=> i !== index)
+                  todos : store.getState().todos.filter((_,i)=> i !== index)
                 })
               }}
               toggle={()=>{
@@ -72,7 +76,7 @@ export default class App extends React.Component{
           }}
         keyExtractor={(item,index) => index.toString()}
           />
-          <TaskModal isVisible={this.state.showModal}
+          <TaskModal isVisible={store.getState().showModal}
             add={(title)=> {
               this.setState({
                 todos : this.state.todos.concat({

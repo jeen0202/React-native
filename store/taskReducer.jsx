@@ -1,6 +1,7 @@
 import { ADD_TASK, DELETE_TASK, DID_TASK } from "./taskTypes";
 
 const initState = {
+    showModal : false,
     todos : [
         {"task": "주간회의", "done": true, "id":"1"},
         {"task": "메일확인", "done": false, "id":"2"},

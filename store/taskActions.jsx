@@ -2,7 +2,7 @@ import { ADD_TASK, DELETE_TASK, DID_TASK } from "./taskTypes"
 
 export const addTask = (task) => ({
     type: ADD_TASK,
-    payload : task
+    payload : todos
 })
 
 export const deleteTask = (id) => ({
