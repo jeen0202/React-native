@@ -20,20 +20,6 @@ export default class App extends React.Component{
     // });
 
   }
-
-  // state = {
-  //   todos :[
-  //     {        
-  //       title : "주간회의",
-  //       done : true,
-  //     },
-  //     {
-  //       title : "메일확인",
-  //       done : false,
-  //     },
-  //   ],
-  //   showModal : false
-  // }
   saveItem =() => {
     AsyncStorage.setItem('@todo:state',JSON.stringify(this.state))
   }
