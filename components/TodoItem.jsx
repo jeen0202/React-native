@@ -1,5 +1,5 @@
 import React from 'react'
-import{View,Text,TouchableOpacity,StyleSheet} from 'react-native'
+import{View,Text,TouchableOpacity,StyleSheet, FlatList} from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 import Swipeable from 'react-native-gesture-handler/Swipeable'
 import DeleteButton from './DeleteButton'
@@ -30,6 +30,8 @@ import DeleteButton from './DeleteButton'
         </Swipeable>
     )
 }
+
+
 
 const styles = StyleSheet.create({
     container:{

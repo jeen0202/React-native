@@ -2,7 +2,7 @@ import React, { useState }from 'react';
 import {StyleSheet,FlatList,SafeAreaView } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Header from './components/Header'
-import TodoItem from './components/TodoItem'
+import TodoLists from './containers/TodoLists'
 import TaskModal from './components/TaskModal'
 
 //redux를 사용하기 위한 component import
@@ -13,11 +13,11 @@ import taskReducer from './store/taskReducer';
 export default class App extends React.Component{
   //App 실행시 정보 호출  
   componentDidMount() {
-    AsyncStorage.getItem('@todo:state').then((state)=>{
-      if(state != null){
-        this.setState(JSON.parse(state));
-      }
-    });
+    // AsyncStorage.getItem('@todo:state').then((state)=>{
+    //   if(state != null){
+    //     this.setState(JSON.parse(state));
+    //   }
+    // });
 
   }
 
@@ -49,32 +49,7 @@ export default class App extends React.Component{
             // show={() => {
             //   this.setState({ showModal: true},this.saveItem)}}
                />    
-          <FlatList
-            data = {store.getState().todos}
-            renderItem={({item,index}) => {
-            return(
-              <TodoItem 
-              id = {item.id}         
-              title = {item.task} 
-              done = {item.done}
-              remove={()=>{
-                this.setState({
-                  todos : store.getState().todos.filter((_,i)=> i !== index)
-                })
-              }}
-              toggle={()=>{
-                const newTodos = [...this.state.todos]
-                newTodos[index].done = !newTodos[index].done
-                this.setState({ todos:newTodos},this.saveItem)
-              }}
-              // keyExtractor={(_, index) => {
-              //   return '${index}'
-              //   }}
-              />
-            )
-          }}
-        keyExtractor={(item,index) => index.toString()}
-          />
+          <TodoLists/>
           <TaskModal isVisible={store.getState().showModal}
             add={(title)=> {
               this.setState({
