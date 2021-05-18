@@ -1,15 +1,14 @@
 import Header from '../components/Header'
+import { handleModal} from '../store/taskActions'
 import {connect} from 'react-redux'
 //const dispatch = useDispatch();
 
 const mapDispatchToProps = (dispatch) => ({
-    handleModal : handleModal
-},dispatch)
+   handlemodal : () => dispatch(handleModal)
+})
+    
+export default connect(undefined,mapDispatchToProps)(Header);
 
-
-const Headers = connect(null,mapDispatchToProps)(Header);
-
-export default Headers
 // export default connect(null,function(dispatch){
 //     return{
 //         show:() => {

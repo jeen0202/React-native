@@ -1,9 +1,7 @@
-import { createStore } from 'redux';
-import devToolsEnhancer from 'remote-redux-devtools';
+import { createStore} from 'redux';
 import taskReducer from "./taskReducer"
-
-const store = createStore(taskReducer)
-store.subscribe(() => 
-    console.log(store.getState())
-)
-export default store
+ 
+// store.subscribe(() => 
+//     console.log(store.getState())
+// )
+export default createStore(taskReducer);

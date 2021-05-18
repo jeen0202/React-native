@@ -12,20 +12,20 @@ const initState = {
 const taskReducer = (state=initState, action) => {
     switch (action.type) {
         case ADD_TASK:
-            return{
+            return({
                 ...state,
                 todos:[...state.todos, {
                     task:action.payload, done:false, id: Math.random().toString()
                 }
             ]
-            }
+            });
         case DELETE_TASK:
-            return {
+            return ({
                 ...state,
                 todos: state.todos.filter(item=> item.id != action.payload)
-            }
+            });
         case DID_TASK:
-            return{
+            return({
                 ...state,
                 todos: state.todos.map((item) => {
                     if (item.id != action.payload){
@@ -36,16 +36,18 @@ const taskReducer = (state=initState, action) => {
                             done:true
                         }                    
                 })
-            }
+            });
         case SHOW:
-            return{
+            console.log("test");
+            return({
                 ...state,
-                showModal : true
-            }
-        //break;
+                showModal: true
+            });
+                
         default:
-            return state;
+           return state;
     }
+    
 }
 
 export default taskReducer

@@ -1,14 +1,16 @@
-import React, { useState }from 'react';
+import React from 'react';
 import {StyleSheet,FlatList,SafeAreaView } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Header from './components/Header'
+import Header from './containers/Header'
 import TodoLists from './containers/TodoLists'
 import TaskModal from './components/TaskModal'
 
 //redux를 사용하기 위한 component import
-import { createStore } from 'redux'
+import store from './store/store'
+// import { createStore } from 'redux'
+// import taskReducer from './store/taskReducer';
 import { Provider, connect} from 'react-redux'
-import taskReducer from './store/taskReducer';
+
 
 export default class App extends React.Component{
   //App 실행시 정보 호출  
@@ -23,11 +25,9 @@ export default class App extends React.Component{
   saveItem =() => {
     AsyncStorage.setItem('@todo:state',JSON.stringify(this.state))
   }
-  render(){
-    //console.log(this.state);    
-    const store = createStore(taskReducer);
-    
-    //console.log(store.getState());
+  render(){        
+    // const store = createStore(taskReducer);
+    console.log(store.getState());    
     return (      
       //SafeAreaView : 앱화면에서 안전하게 노출되는 지역설정
       <Provider store = {store}>
@@ -53,7 +53,7 @@ export default class App extends React.Component{
         </SafeAreaView>
       </Provider>
     );
-  }
+  }  
 }
 
 const styles = StyleSheet.create({

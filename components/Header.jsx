@@ -1,10 +1,10 @@
 import React from 'react'
-import {View,Text,StyleSheet, TouchableOpacity} from 'react-native'
+import {View,Text,StyleSheet, TouchableOpacity, ShadowPropTypesIOS} from 'react-native'
 import {Ionicons} from '@expo/vector-icons'
-import {handleModal} from '../store/taskActions'
 
 
-const Header = () =>{    
+
+const Header = ({handlemodal}) =>{     
     return(
         <View style={styles.container}>
             <Text style={styles.title}>
@@ -13,7 +13,7 @@ const Header = () =>{
             <TouchableOpacity
                 activeOpacity={0.8}
                 style = {styles.button}
-                onPress={() => handleModal}>                
+                onPress={handlemodal}>                
                     <Ionicons name ='ios-add' color='#FFFFFF' size={24}/>
                 </TouchableOpacity>
         </View>
