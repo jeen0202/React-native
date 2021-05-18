@@ -26,12 +26,13 @@ export default class App extends React.Component{
   render(){
     //console.log(this.state);    
     const store = createStore(taskReducer);
+    
     //console.log(store.getState());
     return (      
       //SafeAreaView : 앱화면에서 안전하게 노출되는 지역설정
       <Provider store = {store}>
         <SafeAreaView style={styles.container}>
-          <Header
+          <Header          
             // show={() => {
             //   this.setState({ showModal: true},this.saveItem)}}
                />    

@@ -14,6 +14,6 @@ export const didTask = (id) => ({
     type: DID_TASK,
     payload : id
 })
-export const showMoadl = ()=> ({
+export const showModal = ()=> ({
     type : SHOW
 })

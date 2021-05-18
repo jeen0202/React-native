@@ -2,7 +2,7 @@ import { createStore } from 'redux';
 import devToolsEnhancer from 'remote-redux-devtools';
 import taskReducer from "./taskReducer"
 
-const store = createStore(taskReducer,devToolsEnhancer())
+const store = createStore(taskReducer)
 store.subscribe(() => 
     console.log(store.getState())
 )

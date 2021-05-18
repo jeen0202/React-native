@@ -1,15 +1,19 @@
 import Header from '../components/Header'
 import {connect} from 'react-redux'
-import { showModal } from '../store/taskActions'
-import { userDispatch,useSelector} from 'react-redux'
-const dispatch = useDispatch();
+//const dispatch = useDispatch();
 
-const pressPlus = () => dispatch(showMoadl())
+const mapDispatchToProps = (dispatch) => ({
+    handleModal : handleModal
+},dispatch)
 
-export default connect(null,function(dispatch){
-    return{
-        show:() => {
-            dispatch({})
-        }
-    }
-})(Header);
+
+const Headers = connect(null,mapDispatchToProps)(Header);
+
+export default Headers
+// export default connect(null,function(dispatch){
+//     return{
+//         show:() => {
+//             dispatch({})
+//         }
+//     }
+// })(Header);
