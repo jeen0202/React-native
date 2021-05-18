@@ -46,9 +46,9 @@ export default class App extends React.Component{
       <Provider store = {store}>
         <SafeAreaView style={styles.container}>
           <Header
-            show={() => {
-              this.setState({ showModal: true},this.saveItem)
-            }} />    
+            // show={() => {
+            //   this.setState({ showModal: true},this.saveItem)}}
+               />    
           <FlatList
             data = {store.getState().todos}
             renderItem={({item,index}) => {
