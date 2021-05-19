@@ -7,30 +7,25 @@ import TaskModal from './containers/TaskModal'
 
 //redux를 사용하기 위한 component import
 import store from './store/store'
-// import { createStore } from 'redux'
-// import taskReducer from './store/taskReducer';
-import { Provider, connect} from 'react-redux'
+import { Provider} from 'react-redux'
 
 
 export default class App extends React.Component{
   //App 실행시 정보 호출  
   componentDidMount() {
-    // AsyncStorage.getItem('@todo:state').then((state)=>{
-    //   if(state != null){
-    //     this.setState(JSON.parse(state));
-    //   }
-    // });
+    AsyncStorage.getItem('@todo:state').then((state)=>{
+      if(state != null){
+        this.setState(JSON.parse(state));
+      }
+    });
 
   }
   saveItem =() => {
     AsyncStorage.setItem('@todo:state',JSON.stringify(this.state))
   }
-  render(){        
-    // const store = createStore(taskReducer);    
-    store.subscribe(() => 
-    console.log(store.getState())
-)    
-    return (      
+  render(){
+    return (
+      //Provider : Redux 사용을 위한 Component      
       //SafeAreaView : 앱화면에서 안전하게 노출되는 지역설정
       <Provider store = {store}>
         <SafeAreaView style={styles.container}>

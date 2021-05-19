@@ -13,17 +13,3 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(TaskModal);
-
-// isVisible={store.getState().showModal}
-//             add={(title)=> {
-//               this.setState({
-//                 todos : this.state.todos.concat({
-//                   title:title,
-//                   done: false,
-//                 }),
-//                 showModal : false,
-//               },this.saveItem)
-//             }}
-//             hide = {() => {
-//               this.setState({ showModal : false},this.saveItem)
-//             }}

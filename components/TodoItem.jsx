@@ -21,10 +21,10 @@ import DeleteButton from './DeleteButton'
                         style={done ? styles.done : styles.check}
                         >
                             <FontAwesome name="check" color={done ? '#FFFFFF' : '#E0E0E0'} size={14}/>
-                        </TouchableOpacity>
-                        <Text style={styles.title}>
-                            {title}
-                        </Text>
+                    </TouchableOpacity>
+                    <Text style={styles.title}>
+                        {title}
+                    </Text>
                 </View>
             </View>
         </Swipeable>

@@ -25,8 +25,7 @@ const taskReducer = (state=initState, action) => {
                 ...state,
                 todos: state.todos.filter(item=> item.id != action.payload)
             });
-        case DID_TASK:
-            console.log("test");
+        case DID_TASK:            
             return({
                 ...state,
                 todos: state.todos.map((item) => {
@@ -47,8 +46,7 @@ const taskReducer = (state=initState, action) => {
                     }                    
                 })
             });
-        case SHOW:
-            //console.log("test");
+        case SHOW:            
             return({
                 ...state,
                 showModal: true

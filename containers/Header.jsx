@@ -8,11 +8,3 @@ const mapDispatchToProps = (dispatch) => ({
 })
     
 export default connect(undefined,mapDispatchToProps)(Header);
-
-// export default connect(null,function(dispatch){
-//     return{
-//         show:() => {
-//             dispatch({})
-//         }
-//     }
-// })(Header);
