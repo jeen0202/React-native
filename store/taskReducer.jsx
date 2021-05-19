@@ -13,11 +13,12 @@ const taskReducer = (state=initState, action) => {
     switch (action.type) {
         case ADD_TASK:
             return({
-                ...state,
+                ...state,                
+                showModal:false,
                 todos:[...state.todos, {
-                    task:action.payload, done:false, id: Math.random().toString()
-                }
-            ]
+                    task:action.payload, done:false, id: Math.random().toString(),
+                    }               
+                ]
             });
         case DELETE_TASK:
             return ({
