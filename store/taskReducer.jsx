@@ -38,7 +38,7 @@ const taskReducer = (state=initState, action) => {
                 })
             });
         case SHOW:
-            console.log("test");
+            //console.log("test");
             return({
                 ...state,
                 showModal: true

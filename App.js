@@ -3,7 +3,7 @@ import {StyleSheet,FlatList,SafeAreaView } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Header from './containers/Header'
 import TodoLists from './containers/TodoLists'
-import TaskModal from './components/TaskModal'
+import TaskModal from './containers/TaskModal'
 
 //redux를 사용하기 위한 component import
 import store from './store/store'
@@ -34,24 +34,9 @@ export default class App extends React.Component{
       //SafeAreaView : 앱화면에서 안전하게 노출되는 지역설정
       <Provider store = {store}>
         <SafeAreaView style={styles.container}>
-          <Header          
-            // show={() => {
-            //   this.setState({ showModal: true},this.saveItem)}}
-               />    
+          <Header/>    
           <TodoLists/>
-          <TaskModal isVisible={store.getState().showModal}
-            add={(title)=> {
-              this.setState({
-                todos : this.state.todos.concat({
-                  title:title,
-                  done: false,
-                }),
-                showModal : false,
-              },this.saveItem)
-            }}
-            hide = {() => {
-              this.setState({ showModal : false},this.saveItem)
-            }} />   
+          <TaskModal/>   
         </SafeAreaView>
       </Provider>
     );
