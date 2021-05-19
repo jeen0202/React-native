@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { didTask} from '../store/taskActions'
 import TodoList from '../components/TodoList';
 
 const getVisibleTodos = (todos) => {
@@ -7,10 +8,17 @@ const getVisibleTodos = (todos) => {
 
 const mapStateToProps = state => {
     return {
-        todos: getVisibleTodos(state.todos)
+        todos: getVisibleTodos(state.todos)        
     }
 }
+const mapDispatchToProps = (dispatch) => ({
+    toggle : (id) => {
+    console.log("id ",id);
+    dispatch(didTask(id))   
+    },
+    
+})
 
-const TodoLists = connect(mapStateToProps)(TodoList);
+const TodoLists = connect(mapStateToProps,mapDispatchToProps)(TodoList);
 
 export default TodoLists;

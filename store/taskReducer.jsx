@@ -25,16 +25,25 @@ const taskReducer = (state=initState, action) => {
                 todos: state.todos.filter(item=> item.id != action.payload)
             });
         case DID_TASK:
+            console.log("test");
             return({
                 ...state,
                 todos: state.todos.map((item) => {
                     if (item.id != action.payload){
                         return item
-                    }
+                    }else{
+                        if(item.done === true){
+                            return{
+                                ...item,
+                                done:false
+                            }
+                        }
                         return{
                             ...item,
                             done:true
                         }                    
+
+                    }                    
                 })
             });
         case SHOW:
