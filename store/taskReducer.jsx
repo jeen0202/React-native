@@ -1,4 +1,4 @@
-import { ADD_TASK, DELETE_TASK, DID_TASK, SHOW } from "./taskTypes";
+import { ADD_TASK, DELETE_TASK, DID_TASK, SHOW,HIDE } from "./taskTypes";
 
 const initState = {
     showModal : false,
@@ -43,7 +43,11 @@ const taskReducer = (state=initState, action) => {
                 ...state,
                 showModal: true
             });
-                
+        case HIDE:
+            return({
+                ...state,
+                showModal: false
+            })        
         default:
            return state;
     }

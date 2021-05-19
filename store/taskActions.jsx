@@ -1,4 +1,4 @@
-import { ADD_TASK, DELETE_TASK, DID_TASK, SHOW } from "./taskTypes"
+import { ADD_TASK, DELETE_TASK, DID_TASK, SHOW,HIDE } from "./taskTypes"
 
 export const addTask = (todos) => ({
     type: ADD_TASK,
@@ -16,4 +16,7 @@ export const didTask = (id) => ({
 })
 export const handleModal = ()=> ({
     type : SHOW
+})
+export const hideModal = () => ({
+    type : HIDE
 })
