@@ -2,7 +2,7 @@ import React from 'react'
 import TodoItem from './TodoItem';
 import {FlatList} from 'react-native'
 
-const TodoList = ({todos,toggle}) => (
+const TodoList = ({todos,toggle,remove}) => (
     <FlatList
             data = {todos}                       
             renderItem={({item,index}) => {
@@ -11,16 +11,8 @@ const TodoList = ({todos,toggle}) => (
               key = {item.id}        
               title = {item.task} 
               done = {item.done}              
-              remove={()=>{
-                this.setState({
-                  todos : store.getState().todos.filter((_,i)=> i !== index)
-                })
-              }}
-              toggle={() => {toggle(item.id)}
-                // const newTodos = [...this.state.todos]
-                // newTodos[index].done = !newTodos[index].done
-                // this.setState({ todos:newTodos},this.saveItem)
-              }
+              remove={()=>remove(item.id)}
+              toggle={() => toggle(item.id)}
               />
             )
           }}
