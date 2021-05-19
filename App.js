@@ -26,8 +26,10 @@ export default class App extends React.Component{
     AsyncStorage.setItem('@todo:state',JSON.stringify(this.state))
   }
   render(){        
-    // const store = createStore(taskReducer);
-    console.log(store.getState());    
+    // const store = createStore(taskReducer);    
+    store.subscribe(() => 
+    console.log(store.getState())
+)    
     return (      
       //SafeAreaView : 앱화면에서 안전하게 노출되는 지역설정
       <Provider store = {store}>

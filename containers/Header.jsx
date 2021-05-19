@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 //const dispatch = useDispatch();
 
 const mapDispatchToProps = (dispatch) => ({
-   handlemodal : () => dispatch(handleModal)
+   handlemodal : () => dispatch(handleModal())
 })
     
 export default connect(undefined,mapDispatchToProps)(Header);
