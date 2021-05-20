@@ -7,6 +7,7 @@ App 개발에 필요한 모듈
 react-native-model  : modal componet 사용을 위해
 react-native-gesture-handler : swipeable : 속성 사용을 위해
 @react-native-async-storage/async-storage : Storage사용을 위해(expo install 설치)
+redux-persist : redux 사용시 Asyncstorage 사용없이 store를 저장하기 위해
 
 APP Debugging을 위한 모듈
 remote-redux-devtools : react native와 같은 개발 형태를 위한 개발 툴
