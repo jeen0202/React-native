@@ -4,7 +4,7 @@ import taskReducer from "./taskReducer"
 
 const persistConfig = {
     key: "root",
-    storgae,
+    storage,
     whitelist: ["taskReducer"]
 }
 export default persistReducer(persistConfig,taskReducer);

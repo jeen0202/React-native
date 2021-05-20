@@ -1,4 +1,5 @@
 import { createStore} from 'redux';
 import taskReducer from "./taskReducer"
+import persistReducer from "./persistReducer"
  
-export default createStore(taskReducer);
+export default createStore(persistReducer);
