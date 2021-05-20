@@ -1,6 +1,6 @@
 import React from 'react'
-import {TocuableOpacity,Text,StyleSheet, TouchableOpacity} from 'react-native'
-
+import {TouchableOpacity,StyleSheet} from 'react-native'
+import {Foundation} from '@expo/vector-icons'
 const DeleteButton = ({
     onPress,
 }) => {
@@ -9,9 +9,10 @@ const DeleteButton = ({
             activeOpacity={0.8}
             onPress={onPress}
             style={styles.button}>
-                <Text style={styles.text}>
+            <Foundation name ='page-delete' color='#FFFFFF' size={24}/>
+                {/* <Text style={styles.text}>
                     삭제
-                </Text>
+                </Text> */}
             </TouchableOpacity>
     )
 }

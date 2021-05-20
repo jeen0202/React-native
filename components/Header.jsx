@@ -28,12 +28,12 @@ const styles = StyleSheet.create({
         //각 요소가 양쪽으로 떨어지게 만든다.
         marginTop : 56,
         marginBottom : 16,
-        marginLeft : 16,
+        marginLeft : 16,         
     },
     title : {
         color : '#212121',
         fontSize : 32,
-        fontWeight : '600',
+        fontWeight : '600',          
     },
     button: {
         width: 28,

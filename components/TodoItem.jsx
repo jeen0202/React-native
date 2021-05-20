@@ -22,7 +22,7 @@ import DeleteButton from './DeleteButton'
                         >
                             <FontAwesome name="check" color={done ? '#FFFFFF' : '#E0E0E0'} size={14}/>
                     </TouchableOpacity>
-                    <Text style={styles.title}>
+                    <Text style={done ? styles.doneTitle: styles.title}>
                         {title}
                     </Text>
                 </View>
@@ -49,6 +49,11 @@ const styles = StyleSheet.create({
     title:{
         fontSize:16,
         color: '#424242'
+    },
+    doneTitle:{
+        fontSize:16,
+        textDecorationLine:'line-through',
+        color : '#D8D8D8'        
     },
     check: {
         borderWidth: 1,
